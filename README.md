@@ -1,4 +1,4 @@
-# my-first-app-inclass-summer-2024
+# Cassette  Beasts
 
 ## Setup
 
