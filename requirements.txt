@@ -13,3 +13,7 @@ flask
 gunicorn
 
 pytest
+
+requests
+bs4
+
