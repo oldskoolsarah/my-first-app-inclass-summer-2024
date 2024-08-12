@@ -2,33 +2,27 @@
 
 {% block content %}
 
-    <h1>Cassette Beasts Table</h1>
-    <br>
-
-    
-
-    <table>
-        <th>Col1</th>
-        <th>Col2</th>
-        <th>Col3</th>
-        <th>Col4</th>
-        <th>Col5</th>
-        <th>Col6</th>
-
-        {% for line in data%}
-        <tr>
-            <td>{{line['Col1']}}</td>
-            <td>{{line['Col2']}}</td>
-            <td>{{line['Col3']}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
-
     <form action="/cb_lookup" method="POST">
 
-        
-        
+        <h1>Cassette Beasts Table</h1>
+        <br>
+    
+        <table>
+            <th>Col1</th>
+            <th>Col2</th>
+            <th>Col3</th>
+            <th>Col4</th>
+            <th>Col5</th>
+            <th>Col6</th>
+    
+            {% for line in data%}
+            <tr>
+                <td>{{line['Col1']}}</td>
+                <td>{{line['Col2']}}</td>
+                <td>{{line['Col3']}}</td>
+            </tr>
+            {% endfor %}
+        </table>  
 
     </form>
 
