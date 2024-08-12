@@ -1,10 +1,18 @@
 
-import bs4
+import bs4 #contains beautifulsoup
 import requests
-import BeautifulSoup
+from pandas import DataFrame
 
-def fetch_beast_data(number="001"):
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+
+def load_beast_data():
+
+    import requests
+    from bs4 import BeautifulSoup
+    
     # pull in data from CB wiki page
     request_url = "https://wiki.cassettebeasts.com/wiki/Species"
 
@@ -49,9 +57,62 @@ def fetch_beast_data(number="001"):
         records.append(record)
 
     
-    #return records[tr]
+    #print(records)
+    return records
+    #return records[0:5]
+
+def print_beast_data():
+
+    from pandas import DataFrame
+
+    records = load_beast_data()
+
+    df = DataFrame(records)
+    df.index.name = "Id"
+    df.head()
+    #print(df)
+
+    return df
 
 
+def fetch_beast_data(records):
+
+    # fake user input
+    user_beast_name_input = "Springheel"
+    user_beast_number_input = "001"
+    search_successful = False
+
+    for tr in records[tr]:
+        if (records[tr] == user_beast_number_input):
+
+            search_successful = True
+            return records[tr]
 
 
+    if (search_successful == False):
+            print("Could not find entered beast. Please try again.")
+
+
+load_beast_data()
+#print_beast_data()
+
+if __name__ == "__main__":
+
+    
+    # only if running from command line will this get reached
+
+    # BEAST SELECTION
+
+    #number = input("Please input a number (e.g. '001'): ")
+    #print("NUMBER:", number)
+
+    # REPORT
+
+    #df = print_beast_data()
+
+    #print(df.columns)
+    #print(len(df))
+    #df.head()
+
+    print_beast_data()
 

@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block content %}
@@ -8,15 +7,17 @@
     <p>This page allows users to query data about the monsters in the game 'Cassette Beasts'.</p>
     <p>Please enter the name or number of the monster below.</p>
 
-    <form action="/cb_form" method="GET">
+    <form action="/cb_lookup" method="POST">
 
-        <label>Or Display All</label>
-        
-    </form>
+        <label>RESULT BELOW:</label>
+        <br>
 
-    <form action="/cb_form" method="POST">
+        <script type="text/javascript">
 
-        <button class="btn btn-success">Display All</button>
+            console.log("Loaded CB Lookup...")
+            print.data
+            
+        </script>
 
     </form>
 

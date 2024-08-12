@@ -43,5 +43,6 @@ jobs:
         # set environment variable to use during testing
         # ... using the repository secret value set securely via repo settings
         ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         pytest

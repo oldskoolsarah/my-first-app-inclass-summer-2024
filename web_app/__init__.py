@@ -11,6 +11,7 @@ def create_app():
     app.register_blueprint(home_routes)
     app.register_blueprint(stocks_routes)
     app.register_blueprint(cb_routes)
+    app.secret_key = "SECRET_KEY"
     return app
 
 if __name__ == "__main__":

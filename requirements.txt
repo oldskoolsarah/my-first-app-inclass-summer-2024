@@ -15,5 +15,6 @@ gunicorn
 pytest
 
 requests
-bs4
+bs4 #contains Beautifulsoup
+
 
