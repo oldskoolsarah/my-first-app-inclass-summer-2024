@@ -1,11 +1,12 @@
 
 from flask import Blueprint, request, render_template, redirect, flash
-from app.cb import load_beast_data, print_beast_data
+from app.cb import load_beast_data, print_beast_data, fill_file
 import os
 
 cb_routes = Blueprint("cb_routes", __name__)
 
 load_beast_data()
+fill_file()
 
 @cb_routes.route("/cb_form", methods=["GET", "POST"])
 
@@ -19,24 +20,12 @@ def cb_form():
     #print(_html)
     print("Fetched Cassette Beasts Data!", "success")
 
-    isExist = os.path.exists(r"C:\Users\sarah\OneDrive\Desktop\Python\Projects\cassette-beasts-app\web_app\templates\cb_lookup.html")
-    print(isExist)
+    #isExist = os.path.exists(r"C:\Users\sarah\OneDrive\Desktop\Python\Projects\cassette-beasts-app\web_app\templates\cb_lookup.html")
+    #print(isExist)
 
-    if not isExist:
-        print("cb lookup html Does not exist.")
-        return render_template("cb_form.html")
-
-    lookup_file = open('cb_lookup.html', 'w')
-    lookup_file.write(_html)
-    lookup_file.close()
-    lookup_file = open('cb_lookup.html', 'r')
-    first_char = lookup_file.read(1)
-    lookup_file.close()
-
-    if not first_char:
-        print("empty file")
-        return render_template("cb_form.html")
-
+    #if not isExist:
+    #    print("cb lookup html Does not exist.")
+    #    return render_template("cb_form.html")
 
     return render_template("cb_lookup.html")
 
@@ -45,7 +34,6 @@ def cb_form():
         #    flash("Data Error. Please check your input and try again!", "danger")
         #    return redirect("/cb_form")
         
-
 
 @cb_routes.route("/cb_lookup", methods=["GET", "POST"])
 def cb_lookup():

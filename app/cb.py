@@ -70,7 +70,7 @@ def print_beast_data():
     df = DataFrame(records)
     df.index.name = "Id"
     df.head()
-    #print(df)
+    print(df)
 
     return df
 
@@ -88,7 +88,6 @@ def fetch_beast_data(records):
             search_successful = True
             return records[tr]
 
-
     if (search_successful == False):
             print("Could not find entered beast. Please try again.")
 
@@ -96,9 +95,33 @@ def fetch_beast_data(records):
 load_beast_data()
 #print_beast_data()
 
+def fill_file():
+
+    load_beast_data()
+
+    print("Cassette Beasts Form.")
+    df = print_beast_data()
+    _html = df.to_html()
+
+    print("Fetched Cassette Beasts Data!", "success")
+
+    isExist = os.path.exists(r"C:\Users\sarah\OneDrive\Desktop\Python\Projects\cassette-beasts-app\web_app\templates\cb_lookup.html")
+    print(isExist)
+
+    if not isExist:
+        print("cb lookup html Does not exist.")
+        return render_template("cb_form.html")
+
+    lookup_file = open('cb_lookup.html', 'w')
+    lookup_file.write(_html)
+    lookup_file.close()
+    lookup_file = open('cb_lookup.html', 'r')
+    print ("cb_lookup.html overwritten")
+
+fill_file()
+
 if __name__ == "__main__":
 
-    
     # only if running from command line will this get reached
 
     # BEAST SELECTION
@@ -114,5 +137,6 @@ if __name__ == "__main__":
     #print(len(df))
     #df.head()
 
-    print_beast_data()
+    fill_file()
+    #print_beast_data()
 
