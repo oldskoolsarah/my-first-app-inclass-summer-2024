@@ -22,18 +22,17 @@ def cb_form():
         #data = df.to_dict("records")
             html = df.to_html()
 
-            print.html
-
-            flash("Fetched Cassette Beasts Data!", "success")
+            #print(html)
+            print("Fetched Cassette Beasts Data!", "success")
         
             return render_template("cb_lookup.html",
-                data=data
+                data=html
             )
 
         except Exception as err:
             print('OOPS', err)
-            flash("Data Error. Please check your input and try again!", "danger")
-            return redirect("/cb_form")
+            #flash("Data Error. Please check your input and try again!", "danger")
+            #return redirect("/cb_form")
         
 
 

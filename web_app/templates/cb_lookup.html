@@ -2,22 +2,33 @@
 
 {% block content %}
 
-    <h1>Cassette Beasts Lookup</h1>
+    <h1>Cassette Beasts Table</h1>
+    <br>
 
-    <p>This page allows users to query data about the monsters in the game 'Cassette Beasts'.</p>
-    <p>Please enter the name or number of the monster below.</p>
+    
+
+    <table>
+        <th>Col1</th>
+        <th>Col2</th>
+        <th>Col3</th>
+        <th>Col4</th>
+        <th>Col5</th>
+        <th>Col6</th>
+
+        {% for line in data%}
+        <tr>
+            <td>{{line['Col1']}}</td>
+            <td>{{line['Col2']}}</td>
+            <td>{{line['Col3']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
 
     <form action="/cb_lookup" method="POST">
 
-        <label>RESULT BELOW:</label>
-        <br>
-
-        <script type="text/javascript">
-
-            console.log("Loaded CB Lookup...")
-            print.data
-            
-        </script>
+        
+        
 
     </form>
 
